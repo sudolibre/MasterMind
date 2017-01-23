@@ -218,42 +218,42 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-Ze-Sm4" userLabel="hintView">
                                 <rect key="frame" x="242" y="218" width="105" height="230"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-dt-duf" userLabel="hint6">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-dt-duf" userLabel="hint6">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="cD7-qm-Ycy"/>
                                             <constraint firstAttribute="width" constant="105" id="cOy-VK-LFc"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="WI2-OW-QF2" userLabel="hint5">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="WI2-OW-QF2" userLabel="hint5">
                                         <rect key="frame" x="0.0" y="40" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="JhV-d9-xnL"/>
                                             <constraint firstAttribute="height" constant="30" id="w1L-yC-p55"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="YgV-Dx-4tb" userLabel="hint4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="YgV-Dx-4tb" userLabel="hint4">
                                         <rect key="frame" x="0.0" y="80" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="h4O-ap-tMq"/>
                                             <constraint firstAttribute="height" constant="30" id="qj1-PB-2EJ"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="qKE-Kk-LU8" userLabel="hint3">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="qKE-Kk-LU8" userLabel="hint3">
                                         <rect key="frame" x="0.0" y="120" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="EVH-Gz-3C0"/>
                                             <constraint firstAttribute="height" constant="30" id="yxU-vR-VwV"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-3o-phm" userLabel="hint2">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-3o-phm" userLabel="hint2">
                                         <rect key="frame" x="0.0" y="160" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="gNK-Dl-ecg"/>
                                             <constraint firstAttribute="width" constant="105" id="uom-2f-gPp"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-t1-Ovm" userLabel="hint1">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-t1-Ovm" userLabel="hint1">
                                         <rect key="frame" x="0.0" y="200" width="105" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="M5z-fx-9Ug"/>

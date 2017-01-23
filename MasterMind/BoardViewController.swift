@@ -11,6 +11,7 @@ import UIKit
 class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet var winLabel: UILabel!
    
+    @IBOutlet var ballImage: UIImageView!
     @IBOutlet var okButton: UIButton!
     @IBOutlet var hintView: UIStackView!
     
@@ -70,22 +71,19 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 userWon()
             }
             
-            let hintSubViews = hint.pegs.map { (peg) -> UIButton in
-                let button = UIButton()
-                
-                switch peg {
-                case .black:
-                    button.setTitle("⚫️", for: .normal)
-                case .white:
-                    button.setTitle("⚪️", for: .normal)
-                }
-                
-                return button
+            let hintSubViews = hint.pegs.map { (peg) -> UIImageView in
+                let image = UIImage(named: "ball")!.withRenderingMode(.alwaysTemplate)
+                let imageView = UIImageView(image: image)
+                imageView.tintColor = peg.color
+                imageView.contentMode = .scaleAspectFit
+                return imageView
             }
+            
             
             for i in hintSubViews {
                 let currentHint = hintView.subviews[currentIndex] as! UIStackView
                 currentHint.addArrangedSubview(i)
+                print(i.debugDescription)
             }
             
             
@@ -109,7 +107,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var board = Board(codes: nil, key: nil)
     
-    var pickerOptions: [UIView]!
+    var pickerOptions: [UILabel]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +172,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         if pickerOptions.count != 0 {
-        let selectedColor = pickerOptions[selectedRow].backgroundColor!
+        let selectedColor = pickerOptions[selectedRow].textColor!
         pickerOptions.remove(at: selectedRow)
         pickerView.reloadAllComponents()
         sender.setTitleColor(selectedColor, for: .normal)

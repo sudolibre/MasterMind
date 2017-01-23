@@ -65,4 +65,13 @@ enum CodePeg: Int {
 enum KeyPeg {
     case black,
     white
+    
+    var color: UIColor {
+        switch self {
+        case .black:
+            return UIColor.black
+        case .white:
+            return UIColor.white
+        }
+    }
 }
