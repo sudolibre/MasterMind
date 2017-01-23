@@ -109,13 +109,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var board = Board(codes: nil, key: nil)
     
-    var pickerOptions: [UILabel] = CodePeg.allColors.map {
-        let label = UILabel()
-        label.text = "O"
-        label.font = UIFont.boldSystemFont(ofSize: 16.0)
-        label.textColor = $0
-        return label
-    }
+    var pickerOptions: [UIView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,6 +150,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         return pickerOptions[row]
     }
     
+    //trying to fix bug where picker view does not show the currently selected item
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return 20
     }
@@ -179,7 +174,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         if pickerOptions.count != 0 {
-        let selectedColor = pickerOptions[selectedRow].textColor!
+        let selectedColor = pickerOptions[selectedRow].backgroundColor!
         pickerOptions.remove(at: selectedRow)
         pickerView.reloadAllComponents()
         sender.setTitleColor(selectedColor, for: .normal)
