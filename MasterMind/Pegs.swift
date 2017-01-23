@@ -58,6 +58,7 @@ enum CodePeg: Int {
         return [UIColor.blue, UIColor.brown, UIColor.green, UIColor.purple, UIColor.orange, UIColor.red]
 
     }
+    
 }
 
 

@@ -119,7 +119,6 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         let allSlots = boardView.subviews.map({$0.subviews})
         let allButtons = allSlots.flatMap({$0}) as! [UIButton]
@@ -155,6 +154,14 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         return pickerOptions[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 20
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 20
     }
     
     func pegButtonTapped(_ sender: UIButton) {

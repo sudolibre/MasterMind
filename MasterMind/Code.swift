@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct Code {
+struct Code: Equatable {
     var pegs: [CodePeg]
+    
+    static func ==(_ lhs: Code, _ rhs: Code) -> Bool {
+        return lhs.pegs == rhs.pegs
+    }
 }

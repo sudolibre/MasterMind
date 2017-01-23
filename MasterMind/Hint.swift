@@ -8,6 +8,11 @@
 
 import Foundation
 
-struct Hint {
+struct Hint: Equatable {
     var pegs: [KeyPeg]
+    
+    static func ==(_ lhs: Hint, _ rhs: Hint) -> Bool {
+        return lhs.pegs == rhs.pegs
+    }
+
 }

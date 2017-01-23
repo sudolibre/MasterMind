@@ -54,7 +54,7 @@ class Board {
             let key = optionalKey {
             //if we have an unexpected count of slots or key length we fail initialization
             guard codes.count == tryCount,
-                codes.flatMap({$0}).count == (codeLength * tryCount),
+                codes.flatMap({$0.pegs}).count == (codeLength * tryCount),
                 key.pegs.count == codeLength,
                 key.pegs.count == codeLength else {
                     return nil
