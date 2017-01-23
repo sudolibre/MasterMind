@@ -210,7 +210,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1B6-y3-Xmx">
                                 <rect key="frame" x="56" y="418" width="30" height="30"/>
-                                <state key="normal" title="OK!"/>
+                                <state key="normal" title="Try!"/>
                                 <connections>
                                     <action selector="tappedOK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZJt-TV-4eB"/>
                                 </connections>

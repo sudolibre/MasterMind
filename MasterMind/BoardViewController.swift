@@ -25,11 +25,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             }
             
             pickerOptions = CodePeg.allColors.map {
-                let label = UILabel()
-                label.text = "O"
-                label.font = UIFont.boldSystemFont(ofSize: 16.0)
-                label.textColor = $0
-                return label
+                return createBallFromColor($0)
             }
             
             pickerView.reloadAllComponents()
@@ -37,18 +33,19 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func tappedOK(_ sender: UIButton) {
-        //need to guard that all buttons have been selected here
-        let codeViewButtons = activeCodeView.subviews
-        let pegs = codeViewButtons.flatMap { (view) -> CodePeg? in
-            let button = view as! UIButton
-            let color = button.titleColor(for: .normal)!
-            if color == UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1) {
+        let codeViewImages = activeCodeView.subviews
+        // create pegs from each color
+        let pegs = codeViewImages.flatMap { (view) -> CodePeg? in
+            let imageView = view as? UIImageView
+            if let color = imageView?.tintColor! {
+            return CodePeg(color: color)
+            } else {
                 return nil
             }
-            return CodePeg(color: color)
         }
         
-        if pegs.count != codeViewButtons.count {
+        // ensure we have enough pegs then add them to the datasource
+        if pegs.count < 4 {
             let ac = UIAlertController(title: "Code Incomplete", message: "Please ensure you've selected at least four colors.", preferredStyle: .alert)
             let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
             ac.addAction(dismissAction)
@@ -59,10 +56,10 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             let code = Code(pegs: pegs)
             board!.addCode(code)
             
-            for view in codeViewButtons {
-                let button = view as! UIButton
+            for case let button as UIButton in codeViewImages {
                 button.isEnabled = false
             }
+
             
             let currentIndex = boardView.subviews.index(of: activeCodeView)!
             let hint = board!.hints.last!
@@ -72,18 +69,13 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             }
             
             let hintSubViews = hint.pegs.map { (peg) -> UIImageView in
-                let image = UIImage(named: "ball")!.withRenderingMode(.alwaysTemplate)
-                let imageView = UIImageView(image: image)
-                imageView.tintColor = peg.color
-                imageView.contentMode = .scaleAspectFit
-                return imageView
+                return createBallFromColor(peg.color)
             }
             
             
             for i in hintSubViews {
                 let currentHint = hintView.subviews[currentIndex] as! UIStackView
                 currentHint.addArrangedSubview(i)
-                print(i.debugDescription)
             }
             
             
@@ -107,7 +99,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var board = Board(codes: nil, key: nil)
     
-    var pickerOptions: [UILabel]!
+    var pickerOptions: [UIImageView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,24 +149,37 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         return 20
     }
     
+    func createBallFromColor(_ color: UIColor) -> UIImageView {
+        let image = UIImage(named: "ball")!.withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = color
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }
+    
     func pegButtonTapped(_ sender: UIButton) {
+        let parentStackView = sender.superview!
         let color = sender.currentTitleColor as UIColor
         let defaultColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1)
         
+        // if the current color of the button is not the default color add that color back to the options
         if color != defaultColor {
-            let label = UILabel()
-            label.text = "O"
-            label.font = UIFont.boldSystemFont(ofSize: 16.0)
-            label.textColor = color
-            pickerOptions.append(label)
+            let ballWithColor = createBallFromColor(color)
+            pickerOptions.append(ballWithColor)
             pickerView.reloadAllComponents()
+            let previousImage = parentStackView.subviews.first(where: {$0.center == sender.center && $0 is UIImageView})
+            previousImage?.removeFromSuperview()
         }
+        
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         if pickerOptions.count != 0 {
-        let selectedColor = pickerOptions[selectedRow].textColor!
+        let selectedColor = pickerOptions[selectedRow].tintColor!
         pickerOptions.remove(at: selectedRow)
         pickerView.reloadAllComponents()
+        let ballWithColor = createBallFromColor(selectedColor)
+        ballWithColor.center = sender.center
+        parentStackView.addSubview(ballWithColor)
         sender.setTitleColor(selectedColor, for: .normal)
         }
     }
