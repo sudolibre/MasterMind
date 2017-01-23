@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E899D5311E353B5D00579E32 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899D5301E353B5D00579E32 /* Code.swift */; };
+		E899D5351E357A2200579E32 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899D5341E357A2200579E32 /* Hint.swift */; };
 		E8E6D1681E3154F4008E90CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1671E3154F4008E90CE /* AppDelegate.swift */; };
-		E8E6D16A1E3154F4008E90CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1691E3154F4008E90CE /* ViewController.swift */; };
+		E8E6D16A1E3154F4008E90CE /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1691E3154F4008E90CE /* BoardViewController.swift */; };
 		E8E6D16D1E3154F4008E90CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E6D16B1E3154F4008E90CE /* Main.storyboard */; };
 		E8E6D16F1E3154F4008E90CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E6D16E1E3154F4008E90CE /* Assets.xcassets */; };
 		E8E6D1721E3154F4008E90CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E6D1701E3154F4008E90CE /* LaunchScreen.storyboard */; };
 		E8E6D17D1E3154F4008E90CE /* MasterMindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D17C1E3154F4008E90CE /* MasterMindTests.swift */; };
 		E8E6D1881E3154F4008E90CE /* MasterMindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1871E3154F4008E90CE /* MasterMindUITests.swift */; };
+		E8E6D1961E315502008E90CE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1951E315502008E90CE /* Board.swift */; };
+		E8E6D1981E3155A0008E90CE /* Pegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E6D1971E3155A0008E90CE /* Pegs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E899D5301E353B5D00579E32 /* Code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
+		E899D5341E357A2200579E32 /* Hint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		E8E6D1641E3154F4008E90CE /* MasterMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E6D1671E3154F4008E90CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8E6D1691E3154F4008E90CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E8E6D1691E3154F4008E90CE /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		E8E6D16C1E3154F4008E90CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8E6D16E1E3154F4008E90CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E6D1711E3154F4008E90CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		E8E6D1831E3154F4008E90CE /* MasterMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E6D1871E3154F4008E90CE /* MasterMindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMindUITests.swift; sourceTree = "<group>"; };
 		E8E6D1891E3154F4008E90CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8E6D1951E315502008E90CE /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		E8E6D1971E3155A0008E90CE /* Pegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pegs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +106,11 @@
 			isa = PBXGroup;
 			children = (
 				E8E6D1671E3154F4008E90CE /* AppDelegate.swift */,
-				E8E6D1691E3154F4008E90CE /* ViewController.swift */,
+				E8E6D1691E3154F4008E90CE /* BoardViewController.swift */,
+				E8E6D1951E315502008E90CE /* Board.swift */,
+				E899D5301E353B5D00579E32 /* Code.swift */,
+				E899D5341E357A2200579E32 /* Hint.swift */,
+				E8E6D1971E3155A0008E90CE /* Pegs.swift */,
 				E8E6D16B1E3154F4008E90CE /* Main.storyboard */,
 				E8E6D16E1E3154F4008E90CE /* Assets.xcassets */,
 				E8E6D1701E3154F4008E90CE /* LaunchScreen.storyboard */,
@@ -259,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8E6D16A1E3154F4008E90CE /* ViewController.swift in Sources */,
+				E8E6D1981E3155A0008E90CE /* Pegs.swift in Sources */,
+				E8E6D16A1E3154F4008E90CE /* BoardViewController.swift in Sources */,
+				E899D5351E357A2200579E32 /* Hint.swift in Sources */,
 				E8E6D1681E3154F4008E90CE /* AppDelegate.swift in Sources */,
+				E8E6D1961E315502008E90CE /* Board.swift in Sources */,
+				E899D5311E353B5D00579E32 /* Code.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +519,7 @@
 				E8E6D18E1E3154F4008E90CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8E6D18F1E3154F4008E90CE /* Build configuration list for PBXNativeTarget "MasterMindTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +528,7 @@
 				E8E6D1911E3154F4008E90CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8E6D1921E3154F4008E90CE /* Build configuration list for PBXNativeTarget "MasterMindUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +537,7 @@
 				E8E6D1941E3154F4008E90CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
