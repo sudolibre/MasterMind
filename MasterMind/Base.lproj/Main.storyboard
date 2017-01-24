@@ -22,13 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfX-Mu-Z0d">
-                                <rect key="frame" x="27.5" y="468.5" width="320" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ofF-Ih-HKp"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Gmk-Ca-IIE"/>
-                                </connections>
-                            </pickerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iBZ-pV-S6f" userLabel="boardView">
                                 <rect key="frame" x="94" y="218" width="105" height="230"/>
                                 <subviews>
@@ -263,40 +256,80 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Won!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izN-7b-G3L">
-                                <rect key="frame" x="88.5" y="28" width="198" height="50.5"/>
+                                <rect key="frame" x="89" y="28" width="198" height="50.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="Yfu-hc-aOb">
+                                <rect key="frame" x="22" y="601" width="16" height="16"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="XeX-j3-AJQ">
+                                <rect key="frame" x="84" y="601" width="16" height="16"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="S7C-5q-Eae">
+                                <rect key="frame" x="146" y="601" width="16" height="16"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="FTW-Nv-yfV">
+                                <rect key="frame" x="270" y="601" width="16" height="16"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="0p0-wS-26C">
+                                <rect key="frame" x="208" y="601" width="16" height="16"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ball" translatesAutoresizingMaskIntoConstraints="NO" id="RfA-p1-F3S">
+                                <rect key="frame" x="332" y="601" width="16" height="16"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="0p0-wS-26C" firstAttribute="leading" secondItem="S7C-5q-Eae" secondAttribute="trailing" constant="46" id="4xt-vm-Y3c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RfA-p1-F3S" secondAttribute="bottom" constant="50" id="59w-s5-8Tb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1B6-y3-Xmx" secondAttribute="trailing" constant="273" id="9Ah-Em-q6m"/>
                             <constraint firstItem="iBZ-pV-S6f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-41" id="AWc-ca-Rbr"/>
                             <constraint firstItem="W6c-Ze-Sm4" firstAttribute="width" secondItem="iBZ-pV-S6f" secondAttribute="width" id="GoB-o1-xBl"/>
                             <constraint firstItem="izN-7b-G3L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lnu-Ed-Kxp"/>
-                            <constraint firstItem="lfX-Mu-Z0d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgO-03-UPB"/>
+                            <constraint firstItem="RfA-p1-F3S" firstAttribute="leading" secondItem="FTW-Nv-yfV" secondAttribute="trailing" constant="46" id="Oc3-Ld-Fkg"/>
                             <constraint firstItem="W6c-Ze-Sm4" firstAttribute="height" secondItem="iBZ-pV-S6f" secondAttribute="height" id="RjU-Qt-gL9"/>
+                            <constraint firstItem="FTW-Nv-yfV" firstAttribute="leading" secondItem="0p0-wS-26C" secondAttribute="trailing" constant="46" id="WIm-nb-FdB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FTW-Nv-yfV" secondAttribute="bottom" constant="50" id="WrA-oE-Tg7"/>
                             <constraint firstItem="1B6-y3-Xmx" firstAttribute="centerY" secondItem="ic7-KM-VgD" secondAttribute="centerY" id="XfT-6U-WSF"/>
-                            <constraint firstItem="lfX-Mu-Z0d" firstAttribute="top" secondItem="iBZ-pV-S6f" secondAttribute="bottom" constant="20" id="iPl-Fw-UTX"/>
+                            <constraint firstItem="Yfu-hc-aOb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="cPc-r5-qJM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yfu-hc-aOb" secondAttribute="bottom" constant="50" id="fRb-mv-diB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XeX-j3-AJQ" secondAttribute="bottom" constant="50" id="mgR-gp-Vzi"/>
+                            <constraint firstItem="S7C-5q-Eae" firstAttribute="leading" secondItem="XeX-j3-AJQ" secondAttribute="trailing" constant="46" id="n5g-qL-HCi"/>
+                            <constraint firstItem="XeX-j3-AJQ" firstAttribute="leading" secondItem="Yfu-hc-aOb" secondAttribute="trailing" constant="46" id="nvC-5W-yiE"/>
                             <constraint firstItem="W6c-Ze-Sm4" firstAttribute="leading" secondItem="iBZ-pV-S6f" secondAttribute="trailing" constant="43" id="rCa-LC-wml"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0p0-wS-26C" secondAttribute="bottom" constant="50" id="sSo-96-24W"/>
                             <constraint firstItem="izN-7b-G3L" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vPn-5w-wc5"/>
                             <constraint firstItem="W6c-Ze-Sm4" firstAttribute="centerY" secondItem="iBZ-pV-S6f" secondAttribute="centerY" id="w0G-46-crx"/>
                             <constraint firstItem="iBZ-pV-S6f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xEs-0L-DHT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="S7C-5q-Eae" secondAttribute="bottom" constant="50" id="zTQ-zk-e9u"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Emv-A3-1gU" appends="YES" id="UPl-0S-0ZO"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="boardView" destination="iBZ-pV-S6f" id="dja-kw-R3k"/>
                         <outlet property="hintView" destination="W6c-Ze-Sm4" id="xL0-4g-mbT"/>
                         <outlet property="okButton" destination="1B6-y3-Xmx" id="Tqu-Zh-seF"/>
                         <outlet property="okYConstraint" destination="XfT-6U-WSF" id="X99-4r-f4v"/>
-                        <outlet property="pickerView" destination="lfX-Mu-Z0d" id="EdY-o2-E7G"/>
                         <outlet property="winLabel" destination="izN-7b-G3L" id="FdX-d0-4tc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Emv-A3-1gU">
+                    <connections>
+                        <action selector="handleTap:" destination="BYZ-38-t0r" id="74x-Zg-4So"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="zDY-59-061"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ball" width="16" height="16"/>
+    </resources>
 </document>

@@ -10,12 +10,26 @@ import UIKit
 
 class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet var winLabel: UILabel!
-   
     @IBOutlet var ballImage: UIImageView!
     @IBOutlet var okButton: UIButton!
     @IBOutlet var hintView: UIStackView!
-    
     @IBOutlet var okYConstraint: NSLayoutConstraint!
+    
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: view)
+        if let pegView = view.subviews.first(where: {$0 is UIImageView && $0.frame.contains(tapLocation)}) {
+            print("peg color selected")
+            if pegView.alpha > 0.5 {
+                currentlySelectedColor = pegView.tintColor
+            }
+        }
+        
+    }
+    var currentlySelectedColor: UIColor?
+    
+    var pegSelectionViews: [UIImageView] {
+        return view.subviews.flatMap({$0 as? UIImageView})
+    }
     
     var activeCodeView: UIView! {
         didSet {
@@ -23,12 +37,10 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 let button = view as! UIButton
                 button.isEnabled = true
             }
-            
-            pickerOptions = CodePeg.allColors.map {
-                return createBallFromColor($0)
+                        
+            for view in pegSelectionViews {
+                addPegViewToSelection(view)
             }
-            
-            pickerView.reloadAllComponents()
         }
     }
     
@@ -104,20 +116,30 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(view.frame)
+        print(view.bounds)
         let allSlots = boardView.subviews.map({$0.subviews})
         let allButtons = allSlots.flatMap({$0}) as! [UIButton]
         
         for button in allButtons {
-            button.addTarget(self, action: #selector(pegButtonTapped(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(pegSlotTapped(_:)), for: .touchUpInside)
             button.adjustsImageWhenDisabled = true
             button.isEnabled = false
         }
         
+        let colors = CodePeg.allColors
+        
+        for pair in zip(pegSelectionViews, colors) {
+            pair.0.tintColor = pair.1
+            pair.0.image = UIImage(named: "ball")!.withRenderingMode(.alwaysTemplate)
+        }
+        
+        
         winLabel.isHidden = true
         
         activeCodeView = boardView.subviews.last!
-
-}
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -157,32 +179,37 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         return imageView
     }
     
-    func pegButtonTapped(_ sender: UIButton) {
+    func pegViewForButton(_ button: UIButton) -> UIImageView? {
+        return button.superview!.subviews.first(where: { $0.center == button.center && $0 is UIImageView }) as? UIImageView
+    }
+    
+    func removePegViewFromSelection(_ pegView: UIImageView) {
+        pegView.alpha = 0.5
+    }
+    func addPegViewToSelection(_ pegView: UIImageView) {
+        pegView.alpha = 1
+    }
+    
+    func pegSlotTapped(_ sender: UIButton) {
         let parentStackView = sender.superview!
-        let color = sender.currentTitleColor as UIColor
-        let defaultColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1)
         
-        // if the current color of the button is not the default color add that color back to the options
-        if color != defaultColor {
-            let ballWithColor = createBallFromColor(color)
-            pickerOptions.append(ballWithColor)
-            pickerView.reloadAllComponents()
-            let previousImage = parentStackView.subviews.first(where: {$0.center == sender.center && $0 is UIImageView})
-            previousImage?.removeFromSuperview()
+        //add peg for currently selected color
+        guard currentlySelectedColor != nil else { return }
+        
+        //add previous color back to selection
+        let previousPegView = pegViewForButton(sender)
+        if let pegViewSelectionToRestore = view.subviews.first(where: {$0 is UIImageView && $0.tintColor == previousPegView?.tintColor }) as? UIImageView {
+            addPegViewToSelection(pegViewSelectionToRestore)
         }
+        previousPegView?.removeFromSuperview()
         
-        
-        let selectedRow = pickerView.selectedRow(inComponent: 0)
-        if pickerOptions.count != 0 {
-        let selectedColor = pickerOptions[selectedRow].tintColor!
-        pickerOptions.remove(at: selectedRow)
-        pickerView.reloadAllComponents()
-        let ballWithColor = createBallFromColor(selectedColor)
+        let ballWithColor = createBallFromColor(currentlySelectedColor!)
         ballWithColor.center = sender.center
         parentStackView.addSubview(ballWithColor)
-        sender.setTitleColor(selectedColor, for: .normal)
+        if let pegViewSelection = view.subviews.first(where: {$0 is UIImageView && $0.tintColor == currentlySelectedColor }) as? UIImageView {
+            removePegViewFromSelection(pegViewSelection)
+            currentlySelectedColor = nil
         }
     }
     
 }
-
