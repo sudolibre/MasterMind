@@ -17,6 +17,18 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBOutlet var okYConstraint: NSLayoutConstraint!
     
+    let allColorOption = CodePeg.allColors
+    var usedColorOptions: Set<UIColor> = []
+    var remainingColorOptions: Set<UIColor> {
+        let allColorSet = Set(allColorOption)
+        let usedColorSet = Set(usedColorOptions)
+        return allColorSet.subtracting(usedColorSet)
+    }
+    
+    var pickerOptions: [UIImageView] {
+        return remainingColorOptions.map(createBallFromColor)
+    }
+    
     var activeCodeView: UIView! {
         didSet {
             for view in activeCodeView.subviews {
@@ -24,10 +36,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 button.isEnabled = true
             }
             
-            pickerOptions = CodePeg.allColors.map {
-                return createBallFromColor($0)
-            }
-            
+            usedColorOptions.removeAll()
             pickerView.reloadAllComponents()
         }
     }
@@ -99,7 +108,6 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var board = Board(codes: nil, key: nil)
     
-    var pickerOptions: [UIImageView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,11 +127,7 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
 }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func userWon() {
         winLabel.isHidden = false
     }
@@ -162,26 +166,27 @@ class BoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let color = sender.currentTitleColor as UIColor
         let defaultColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1)
         
-        // if the current color of the button is not the default color add that color back to the options
-        if color != defaultColor {
-            let ballWithColor = createBallFromColor(color)
-            pickerOptions.append(ballWithColor)
-            pickerView.reloadAllComponents()
-            let previousImage = parentStackView.subviews.first(where: {$0.center == sender.center && $0 is UIImageView})
-            previousImage?.removeFromSuperview()
-        }
         
         
         let selectedRow = pickerView.selectedRow(inComponent: 0)
         if pickerOptions.count != 0 {
-        let selectedColor = pickerOptions[selectedRow].tintColor!
-        pickerOptions.remove(at: selectedRow)
-        pickerView.reloadAllComponents()
-        let ballWithColor = createBallFromColor(selectedColor)
-        ballWithColor.center = sender.center
-        parentStackView.addSubview(ballWithColor)
-        sender.setTitleColor(selectedColor, for: .normal)
+            let selectedColor = pickerOptions[selectedRow].tintColor!
+            usedColorOptions.insert(selectedColor)
+            let ballWithColor = createBallFromColor(selectedColor)
+            ballWithColor.center = sender.center
+            parentStackView.addSubview(ballWithColor)
+            sender.setTitleColor(selectedColor, for: .normal)
         }
+        
+        // if the current color of the button is not the default color add that color back to the options
+        if color != defaultColor {
+            usedColorOptions.remove(color)
+            let previousImage = parentStackView.subviews.first(where: {$0.center == sender.center && $0 is UIImageView})
+            previousImage?.removeFromSuperview()
+        }
+        
+        pickerView.reloadAllComponents()
+
     }
     
 }

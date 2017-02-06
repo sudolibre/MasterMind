@@ -215,7 +215,7 @@
                                     <action selector="tappedOK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZJt-TV-4eB"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-Ze-Sm4" userLabel="hintView">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-Ze-Sm4" userLabel="hintView">
                                 <rect key="frame" x="242" y="218" width="105" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-dt-duf" userLabel="hint6">
